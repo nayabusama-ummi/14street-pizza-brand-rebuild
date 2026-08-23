@@ -45,6 +45,8 @@ export interface MenuItem {
   sauces?: SauceOption[];
   toppings?: ToppingOption[];
   basePrice?: number;
+  ingredients?: string[];
+  includesList?: string[];
 }
 
 export type FulfillmentType = "delivery" | "pickup";

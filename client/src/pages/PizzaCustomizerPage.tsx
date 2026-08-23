@@ -244,10 +244,31 @@ export const PizzaCustomizerPage: React.FC = () => {
 
             </div>
 
-            <div className="mt-8 pt-4 border-t border-[#2a2a2a] text-center">
-              <span className="font-sans text-xs text-[#cdc0ad]">
-                Selected: <strong className="text-white">{selectedSize?.name || "15\" Large"}</strong> on <strong className="text-white">{selectedCrust}</strong>
-              </span>
+            <div className="mt-6 pt-4 border-t border-[#2a2a2a] space-y-2 text-left">
+              <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold text-[#ffb955] uppercase tracking-wider">
+                <Sparkles className="w-3 h-3 text-[#ffb955]" />
+                <span>Chef's Craft Composition</span>
+              </div>
+              <ul className="space-y-1 text-[11px] text-[#cdc0ad]">
+                <li className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D32F2F] shrink-0" />
+                  <span>Size: <strong className="text-white">{selectedSize?.name || "15\" Large"}</strong></span>
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D32F2F] shrink-0" />
+                  <span>Crust: <strong className="text-white">{selectedCrust}</strong></span>
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D32F2F] shrink-0" />
+                  <span>Sauce: <strong className="text-white">{selectedSauce?.name || "Signature Marinara"}</strong></span>
+                </li>
+                {selectedToppings.length > 0 && (
+                  <li className="flex items-start gap-1.5 pt-1 border-t border-white/5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F5A623] mt-1 shrink-0" />
+                    <span>Toppings ({selectedToppings.length}): <span className="text-[#ffb955]">{selectedToppings.map(t => t.name).join(", ")}</span></span>
+                  </li>
+                )}
+              </ul>
             </div>
           </div>
 

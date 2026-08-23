@@ -58,7 +58,23 @@ export const seedMenu: MenuItem[] = [
     sizes: standardPizzaSizes,
     crusts: standardCrusts,
     sauces: standardSauces,
-    toppings: standardToppings
+    toppings: standardToppings,
+    ingredients: [
+      "48-Hour Cold Proof Sourdough Crust",
+      "San Marzano Vine Marinara",
+      "Whole-Milk Wisconsin Mozzarella",
+      "Babool Charcoal-Smoked Chicken Tikka",
+      "Caramelized Sweet Red Onions",
+      "Crunchy Green Bell Peppers",
+      "Roasted Cumin & Paprika Dusting"
+    ],
+    includesList: [
+      "Hand-tossed artisan dough base",
+      "Charcoal-smoked desi chicken tikka",
+      "Signature herb marinara sauce",
+      "Melted whole-milk mozzarella",
+      "Crisp onions & bell peppers"
+    ]
   },
   {
     id: "manhattan-beef-pepperoni",
@@ -74,7 +90,21 @@ export const seedMenu: MenuItem[] = [
     sizes: standardPizzaSizes,
     crusts: standardCrusts,
     sauces: standardSauces,
-    toppings: standardToppings
+    toppings: standardToppings,
+    ingredients: [
+      "48-Hour Fermented Dough",
+      "Slow-Simmered Italian Tomato Marinara",
+      "Double Whole-Milk Mozzarella",
+      "Cupping Smoked Beef Pepperoni (Edge-to-Edge)",
+      "Garlic-Infused Extra Virgin Olive Oil",
+      "Crushed Red Pepper & Oregano"
+    ],
+    includesList: [
+      "Edge-to-edge premium beef pepperoni",
+      "Double-layer whole milk mozzarella",
+      "Slow-simmered vine marinara",
+      "Garlic-infused olive oil crust rim"
+    ]
   },
   {
     id: "broadway-fajita-supreme",
@@ -90,7 +120,22 @@ export const seedMenu: MenuItem[] = [
     sizes: standardPizzaSizes,
     crusts: standardCrusts,
     sauces: standardSauces,
-    toppings: standardToppings
+    toppings: standardToppings,
+    ingredients: [
+      "High-Hydration Durum Crust",
+      "Spicy Peri-Peri Marinara Base",
+      "Zesty Marinated Fajita Chicken",
+      "Whole-Milk Mozzarella & Cheddar Blend",
+      "Spanish Black Olives & Sweet Corn",
+      "Pickled Green Jalapeño Slices",
+      "Flame-Roasted Peri-Peri Drizzle"
+    ],
+    includesList: [
+      "Spiced Mexican fajita chicken",
+      "Sliced black olives & golden sweet corn",
+      "Pickled green jalapeños",
+      "Fiery peri-peri finishing drizzle"
+    ]
   },
   {
     id: "soho-four-cheese-melt",
@@ -106,7 +151,22 @@ export const seedMenu: MenuItem[] = [
     sizes: standardPizzaSizes,
     crusts: standardCrusts,
     sauces: standardSauces,
-    toppings: standardToppings
+    toppings: standardToppings,
+    ingredients: [
+      "Artisan Hand-Stretched Dough",
+      "San Marzano Herb Tomato Base",
+      "Whole-Milk Mozzarella",
+      "Sharp Wisconsin Cheddar",
+      "Aged Dutch Gouda",
+      "Freshly Grated Parmigiano-Reggiano",
+      "Wild Italian Mountain Oregano"
+    ],
+    includesList: [
+      "Four premium cheeses (Mozzarella, Cheddar, Gouda, Parmesan)",
+      "San Marzano herb marinara sauce",
+      "Colossal golden cheese pull stretch",
+      "Fragrant oregano & garlic butter brush"
+    ]
   },
   {
     id: "brooklyn-bbq-smokehouse",
@@ -121,7 +181,22 @@ export const seedMenu: MenuItem[] = [
     sizes: standardPizzaSizes,
     crusts: standardCrusts,
     sauces: standardSauces,
-    toppings: standardToppings
+    toppings: standardToppings,
+    ingredients: [
+      "48-Hour Cold Proof Crust",
+      "Hickory Smoked BBQ Sauce Base",
+      "Smoky Shredded BBQ Chicken",
+      "Slow-Roasted Beef Chunks",
+      "Sliced Button Mushrooms",
+      "Caramelized Red Onions",
+      "Whole-Milk Mozzarella Blend"
+    ],
+    includesList: [
+      "Smoky pulled chicken & roasted beef chunks",
+      "Hickory BBQ sauce spiral glaze",
+      "Fresh button mushrooms & red onions",
+      "Bubbling whole-milk mozzarella"
+    ]
   },
 
   // ==================== BUILD YOUR OWN ====================
@@ -139,10 +214,23 @@ export const seedMenu: MenuItem[] = [
     sizes: standardPizzaSizes,
     crusts: standardCrusts,
     sauces: standardSauces,
-    toppings: standardToppings
+    toppings: standardToppings,
+    ingredients: [
+      "Freshly Hand-Stretched 48-Hour Fermented Dough",
+      "Choice of 5 Signature Deck Sauces",
+      "Choice of 4 Artisan Crust Styles",
+      "Full Selection of Meats, Cheeses & Farm Vegetables",
+      "Oven-Baked on 550°F Volcanic Stone Deck"
+    ],
+    includesList: [
+      "Complete custom size & crust selection",
+      "Choice of sauce base & cheese blend",
+      "Unlimited customizable topping additions",
+      "Baked fresh to order in 550°F hearth"
+    ]
   },
 
-  // ==================== DEALS ====================
+  // ==================== DEALS & FEASTS ====================
   {
     id: "deal-monster-squad",
     name: "The 20\" Monster Squad Feast",
@@ -153,7 +241,20 @@ export const seedMenu: MenuItem[] = [
     available: true,
     featured: true,
     badge: "Save PKR 600",
-    basePrice: 4299
+    spicyLevel: 0,
+    basePrice: 4299,
+    ingredients: [
+      "1x Colossal 20-Inch Monster Pizza (12 Foldable Slices)",
+      "1x Four-Cheese Pull-Apart Garlic Bread Loaf",
+      "6x Flame-Roasted Fiery Peri-Peri Wings with Ranch",
+      "1x 1.5 Liter Ice-Cold Party Bottle Beverage"
+    ],
+    includesList: [
+      "1x Giant 20\" Monster Pizza (314 sq inches)",
+      "1x Four-Cheese Pull-Apart Garlic Bread",
+      "6x Oven-Baked Peri-Peri Wings + Ranch Dip",
+      "1x Chilled 1.5L Soft Drink Bottle"
+    ]
   },
   {
     id: "deal-duo-delight",
@@ -165,7 +266,70 @@ export const seedMenu: MenuItem[] = [
     available: true,
     featured: false,
     badge: "Popular Value",
-    basePrice: 3199
+    spicyLevel: 1,
+    basePrice: 3199,
+    ingredients: [
+      "2x 12-Inch Medium Pizzas (8 Slices Each)",
+      "Choice of 2 Signature Flavors & Crusts",
+      "2x Gourmet Dipping Sauces (Garlic Ranch & BBQ)",
+      "2x 345ml Chilled Soft Drink Cans"
+    ],
+    includesList: [
+      "2x 12\" Medium Pizzas of your choice",
+      "2x Dipping sauces (Garlic Ranch / Chipotle)",
+      "2x 345ml Ice-Cold Soft Drink Cans",
+      "Perfect for 2-4 persons"
+    ]
+  },
+  {
+    id: "deal-fiery-triple-blaster",
+    name: "The Fiery Triple Blaster Combo",
+    tagline: "Pakistani street heat for daring spice lovers.",
+    description: "1x Large 15\" NY Tikka Blaster Pizza, 6x Fiery Peri-Peri Wings, 1x Loaded Curly Fries, and 2x 345ml Soft Drinks.",
+    category: "deals",
+    image: "/assets/pizzas/tikka_pizza_4k.jpg",
+    available: true,
+    featured: true,
+    badge: "Spice Drop",
+    spicyLevel: 2,
+    basePrice: 3899,
+    ingredients: [
+      "1x Large 15\" NY Tikka Blaster Pizza (10 Slices)",
+      "6x Fiery Baked Peri-Peri Wings with Garlic Ranch",
+      "1x Large Loaded Curly Fries with Cheddar & Jalapeños",
+      "2x 345ml Chilled Soda Cans"
+    ],
+    includesList: [
+      "1x Large 15\" Tikka Blaster Pizza",
+      "6x Fiery Peri-Peri Wings with Dip",
+      "1x Loaded Cheddar Curly Fries",
+      "2x 345ml Soft Drink Cans"
+    ]
+  },
+  {
+    id: "deal-inferno-monster-drop",
+    name: "The 20\" Inferno Monster Feast",
+    tagline: "Ultra-spicy feast for match nights and brave squads.",
+    description: "1x 20\" Monster Broadway Fajita Supreme with Peri-Peri Drizzle, 12x Peri-Peri Wings, and 1x 1.5L Chilled Beverage.",
+    category: "deals",
+    image: "/assets/pizzas/fajita_pizza_4k.jpg",
+    available: true,
+    featured: false,
+    badge: "Fiery Drop",
+    spicyLevel: 3,
+    basePrice: 4699,
+    ingredients: [
+      "1x Giant 20\" Monster Broadway Fajita Supreme Pizza",
+      "12x Flame-Glazed Fiery Peri-Peri Wings",
+      "2x Creamy Buttermilk Garlic Ranch Dips",
+      "1x 1.5 Liter Ice-Cold Soft Drink Bottle"
+    ],
+    includesList: [
+      "1x 20\" Monster Fajita Supreme Pizza (12 Slices)",
+      "12x Fiery Peri-Peri Chicken Wings",
+      "2x Cooling Garlic Ranch Dips",
+      "1x 1.5L Party Beverage Bottle"
+    ]
   },
 
   // ==================== SIDES ====================
@@ -178,7 +342,21 @@ export const seedMenu: MenuItem[] = [
     image: "/assets/items/garlic_bread_4k.jpg",
     available: true,
     featured: false,
-    basePrice: 499
+    spicyLevel: 0,
+    basePrice: 499,
+    ingredients: [
+      "Freshly Baked French Baguette Loaf",
+      "Melted Whole-Milk Mozzarella & Cheddar Core",
+      "Roasted Garlic & Sea Salt Butter",
+      "Fresh Garden Rosemary & Thyme",
+      "Side of Warm San Marzano Marinara Dip"
+    ],
+    includesList: [
+      "1x Oven-baked pull-apart garlic loaf",
+      "Four-cheese bubbling core",
+      "Rosemary garlic herb butter brush",
+      "Warm marinara dipping cup"
+    ]
   },
   {
     id: "side-peri-peri-wings",
@@ -190,7 +368,20 @@ export const seedMenu: MenuItem[] = [
     available: true,
     featured: false,
     spicyLevel: 3,
-    basePrice: 649
+    basePrice: 649,
+    ingredients: [
+      "6x Jumbo Oven-Baked Chicken Wings",
+      "Flame-Roasted African Bird's Eye Peri-Peri Glaze",
+      "Smoked Paprika & Garlic Seasoning",
+      "House-Made Buttermilk Garlic Ranch Dip",
+      "Crisp Fresh Celery Sticks"
+    ],
+    includesList: [
+      "6x Crispy-skinned oven-baked wings",
+      "Signature flame peri-peri glaze",
+      "Cooling buttermilk garlic ranch dip",
+      "Fresh celery sticks"
+    ]
   },
   {
     id: "side-loaded-curly-fries",
@@ -201,7 +392,21 @@ export const seedMenu: MenuItem[] = [
     image: "/assets/items/curly_fries_4k.jpg",
     available: true,
     featured: false,
-    basePrice: 549
+    spicyLevel: 1,
+    basePrice: 549,
+    ingredients: [
+      "Seasoned Spiral-Cut Idaho Potatoes",
+      "Warm Melted Aged Cheddar Sauce",
+      "Crispy Smoked Beef Bacon Crumbles",
+      "Sliced Pickled Green Jalapeños",
+      "Cajun Spiced Sea Salt"
+    ],
+    includesList: [
+      "Crispy golden seasoned curly fries",
+      "Warm cheddar cheese sauce drizzle",
+      "Crushed beef bacon crumbles",
+      "Pickled jalapeño slices"
+    ]
   },
 
   // ==================== DRINKS ====================
@@ -214,7 +419,20 @@ export const seedMenu: MenuItem[] = [
     image: "/assets/items/drink_bottle_4k.jpg",
     available: true,
     featured: false,
-    basePrice: 280
+    spicyLevel: 0,
+    basePrice: 280,
+    ingredients: [
+      "1.5 Liter Chilled Party Bottle",
+      "Choice of Coca-Cola / Sprite / Fanta",
+      "Served Ice-Cold at 2°C",
+      "Zero Artificial Preservatives"
+    ],
+    includesList: [
+      "1x 1.5L Chilled Soft Drink Bottle",
+      "Choice of Coke, Sprite, or Fanta",
+      "Serves 4-6 cups",
+      "Sealed cold for maximum fizz"
+    ]
   },
   {
     id: "drink-soft-drink-can",
@@ -225,7 +443,19 @@ export const seedMenu: MenuItem[] = [
     image: "/assets/items/drink_can_4k.jpg",
     available: true,
     featured: false,
-    basePrice: 150
+    spicyLevel: 0,
+    basePrice: 150,
+    ingredients: [
+      "345ml Single-Serve Aluminum Can",
+      "Choice of Coca-Cola / Coke Zero / Sprite / Pakola",
+      "Chilled to 2°C for instant refreshment",
+      "Optimal fizz retention"
+    ],
+    includesList: [
+      "1x 345ml Chilled Soft Drink Can",
+      "Choice of flavor on checkout/delivery",
+      "Single-serve ice-cold portion"
+    ]
   },
 
   // ==================== DESSERTS ====================
@@ -238,6 +468,19 @@ export const seedMenu: MenuItem[] = [
     image: "/assets/items/lava_cake_4k.jpg",
     available: true,
     featured: false,
-    basePrice: 499
+    spicyLevel: 0,
+    basePrice: 499,
+    ingredients: [
+      "Pure Belgian Dark Couverture Chocolate (70%)",
+      "Freshly Baked Warm Sponge Shell",
+      "Decadent Molten Chocolate Lava Core",
+      "Confectioner's Powdered Sugar Dusting"
+    ],
+    includesList: [
+      "1x Freshly baked individual molten lava cake",
+      "Warm oozing dark chocolate core",
+      "Dusted with powdered sugar",
+      "Served in thermal protective dessert container"
+    ]
   }
 ];

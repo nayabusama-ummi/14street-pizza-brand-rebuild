@@ -135,6 +135,47 @@ export const QuickViewModal: React.FC = () => {
             </p>
           </div>
 
+          {/* Detailed What's Included / Ingredients Breakdown */}
+          {(quickViewProduct.includesList || quickViewProduct.ingredients) && (
+            <div className="p-3.5 rounded-2xl bg-charcoal-950/80 border border-charcoal-800 space-y-2">
+              <div className="flex items-center gap-1.5 text-[11px] font-mono font-bold text-pizza-amber uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5 text-pizza-amber" />
+                <span>
+                  {quickViewProduct.category === "deals" 
+                    ? "Feast Includes" 
+                    : quickViewProduct.category === "drinks" 
+                    ? "Beverage Specs" 
+                    : quickViewProduct.category === "desserts" 
+                    ? "Dessert Specs" 
+                    : quickViewProduct.category === "sides" 
+                    ? "Side Specs & Dipping" 
+                    : "Chef's Craft Composition"}
+                </span>
+              </div>
+
+              {quickViewProduct.includesList && (
+                <ul className="space-y-1 text-xs text-cream-300">
+                  {quickViewProduct.includesList.map((inc, i) => (
+                    <li key={i} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-pizza-red shrink-0" />
+                      <span>{inc}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {quickViewProduct.ingredients && (
+                <div className="flex flex-wrap gap-1 pt-1 border-t border-charcoal-800">
+                  {quickViewProduct.ingredients.map((ing, i) => (
+                    <span key={i} className="px-2 py-0.5 rounded bg-charcoal-900 text-[10px] font-mono text-cream-400 border border-charcoal-800">
+                      {ing}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Size Selector for Pizzas */}
           {isPizza && quickViewProduct.sizes && (
             <div className="space-y-3">
