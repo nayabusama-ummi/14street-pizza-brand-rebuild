@@ -2,6 +2,8 @@
 
 > **Notice**: Independent concept project created for portfolio and educational purposes. Not affiliated with or endorsed by 14th Street Pizza.
 
+![Coding Street Pizza Brand Rebuild](docs/screenshots/hero.png)
+
 ---
 
 ## 📌 Project Overview
@@ -9,6 +11,47 @@
 **Coding Street Pizza Brand Rebuild** is a modern full-stack web application delivering an interactive, high-craft pizza ordering experience inspired by New York-style 20-inch monster slices and bold fusion flavors. 
 
 The project features an interactive catalog, a 6-stage customization workstation, an itemized physical-style order stack, multi-city dispatch checkout with server-authoritative pricing validation, and an order status journey.
+
+---
+
+## 📸 Visual Experience
+
+> The project is designed as one continuous pizza-ordering journey — from discovery and customization to checkout and order status.
+
+### The Flavor Deck
+A spatial menu experience built around craving and category discovery with interactive flavor wheels, heat filters, and direct customization access.
+
+![The Flavor Deck](docs/screenshots/flavor-deck.png)
+
+### The Pizza Forge
+A six-stage interactive pizza customization workstation with live real-time configuration (Size, Crust, Sauce, Cheese, Toppings), live price recalculation, and Flavor DNA profile meters.
+
+![The Pizza Forge](docs/screenshots/pizza-forge.png)
+
+### The Big Ones
+Signature 20-inch monster pizzas delivering 314 square inches of hand-tossed crust, bold fusion flavors, and foldable New York-style slices.
+
+![The Big Ones](docs/screenshots/the-big-ones.png)
+
+### From Flour to Fire
+A cinematic six-act craftsmanship story following the pizza from stone-ground durum wheat hydration and 48-hour cold fermentation to live charcoal smoking and 550°F volcanic stone deck baking.
+
+![From Flour to Fire](docs/screenshots/flour-to-fire.png)
+
+### The Order Stack
+A persistent physical-style cart experience that organizes selected items into a Kraft pizza box stack with itemized modifier breakdowns and live order calculation.
+
+![The Order Stack](docs/screenshots/order-stack.png)
+
+### Delivery Mission Control
+Dual-fulfillment checkout supporting Express Delivery and Direct Pickup, with Pakistani phone and address validation, server-verified pricing, and a dispatch control manifest.
+
+![Delivery Mission Control](docs/screenshots/mission-control.png)
+
+### The Delivery Run
+A milestone-based order journey tracker set against a miniature nighttime city diorama, displaying active preparation stages and human-readable order references (`ST-2026-XXXX`).
+
+![The Delivery Run](docs/screenshots/delivery-run.png)
 
 ---
 
