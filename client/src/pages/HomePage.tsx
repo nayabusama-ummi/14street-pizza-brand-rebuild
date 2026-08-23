@@ -30,7 +30,7 @@ export const HomePage: React.FC = () => {
       description: "Double layers of premium beef pepperoni, house-blend mozzarella, and our signature san marzano tomato base.",
       price: 2299,
       size: "20\" Monster",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDUm8WTBw-CoKSpJay9_MqCxt96LkDm5NdTicsHf78xnc5wLAjp315emaqcYzuAkMb6zybzn7RTiBU-BUAk8UUMoSepZ_MVraDlDKqRgLq7j0fd82ohJjQqjn-0ErkZoZh4ElYfktRN5UDW6ctc7jm748rPl_CqWL_rUUdLT5x8I6ZoScOg4kWEyhmMHNwNF37roN3SSqJt6zG6XFpyuiygkXSMqTPK7nl2p5N6vTRLtBa25tMnju-DiA",
+      image: "/assets/pizzas/pepperoni_pizza_4k.jpg",
       badge: "Best Seller",
       heat: 1
     },
@@ -41,7 +41,7 @@ export const HomePage: React.FC = () => {
       description: "Grilled chicken breast, red onions, smoked gouda, fresh cilantro, and a tangy hickory BBQ spiral.",
       price: 2299,
       size: "20\" Monster",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAfOYqy2MRc5iAAjH4DrqW_brc3SGHtQrrtoGB1YJ69E0NZB6yJfvekvXYIbETsRbFMUlPGSCJaEeLPMbJKx1DgbYrAZK-wS9wjSqddp3OAMbIdqepiXhL91YHkzi6M_o1D193O3X9Wr2ImOq0Pat2zvl3sCkQ4rYJ0GJLdA4eIo5ZosweNwmTWtgnHw6K3eXVN6lhSXnbRyarvKE20eO_-EIHNls0W90RT4EZsuZVs7Kf_kBrXM8m7mA",
+      image: "/assets/pizzas/tikka_pizza_4k.jpg",
       badge: "Smoky Flavor",
       heat: 1
     },
@@ -52,7 +52,7 @@ export const HomePage: React.FC = () => {
       description: "Spicy marinated chicken, tri-color bell peppers, jalapeños, black olives, and our signature spicy sauce.",
       price: 2299,
       size: "20\" Monster",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCe4bXHhbgVGqJLRJow3lIy8AHXFb9qxPG76TKShnC_dS6PmnknxV1QGiY5wr_wGaF-f5qZaVMEsPnUgnw5NTXektTMPPRGgA0jcJ7hrA9eL4JYL_i5qjjD3GCeqgMcP4Nll7rYPnu-D1LDtJg8EmVk5Xo_tJBqtXjMmvW7Y1phpdvupklkPUqvWlTQ2JwNtNEVkDHrafKF5ozTR2YWY4l8zi-X7paEJ65gBLqtmdmaQRLNqB0Kzc5mfw",
+      image: "/assets/pizzas/fajita_pizza_4k.jpg",
       badge: "Spicy Hit",
       heat: 3
     }
@@ -126,7 +126,7 @@ export const HomePage: React.FC = () => {
       includes: ["1x 20\" Monster Pizza (Any Flavor)", "1x Four-Cheese Garlic Bread", "1x 6pc Peri-Peri Wings", "1x 1.5L Chilled Soft Drink"],
       price: 4199,
       originalPrice: 5199,
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80"
+      image: "/assets/pizzas/hero_pizza_4k.jpg"
     },
     {
       id: "deal-duo-large-party",
@@ -136,7 +136,7 @@ export const HomePage: React.FC = () => {
       includes: ["2x 15\" Large Pizzas (Your Choice)", "2x Molten Lava Cakes", "1x 1.5L Chilled Soft Drink"],
       price: 4699,
       originalPrice: 5599,
-      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80"
+      image: "/assets/pizzas/forge_pizza_4k.jpg"
     }
   ];
 
@@ -151,23 +151,23 @@ export const HomePage: React.FC = () => {
     },
     {
       id: "side-peri-peri-wings",
-      name: "Fiery Peri-Peri Wings (6 Pcs)",
-      desc: "Crispy oven-baked wings tossed in house spicy peri glaze.",
+      name: "Fiery Peri-Peri Wings",
+      desc: "Flame-roasted crispy wings tossed in house peri-peri glaze.",
       price: 649,
       image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: "dessert-molten-lava-cake",
-      name: "Belgian Molten Lava Cake",
-      desc: "Warm dark chocolate cake with a rich molten center.",
-      price: 499,
+      id: "side-churros-bites",
+      name: "Cinnamon Sugar Churros",
+      desc: "Golden crispy fried churro bites served with warm chocolate fudge dip.",
+      price: 449,
       image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: "drink-soft-drink-1500ml",
-      name: "Chilled Soft Drink (1.5L)",
-      desc: "Ice cold carbonated beverage to complement the heat.",
-      price: 280,
+      id: "side-fudge-lava-cake",
+      name: "Molten Dark Fudge Cake",
+      desc: "Warm decadent Belgian chocolate cake with a molten liquid center.",
+      price: 549,
       image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=400&q=80"
     }
   ];
@@ -199,12 +199,12 @@ export const HomePage: React.FC = () => {
       <header className="relative min-h-[90vh] flex items-center pt-28 pb-16 overflow-hidden border-b border-[#201f1f]">
         
         {/* Background Gradient & Pizza Photography */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#131313] via-[#131313]/90 to-transparent z-10 pointer-events-none md:w-3/5" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#131313] via-[#131313]/90 md:via-[#131313]/70 to-transparent z-10 pointer-events-none md:w-3/5" />
         <div className="absolute inset-0 z-0 flex justify-end">
           <img 
-            className="w-full md:w-4/5 h-full object-cover object-right opacity-80 mix-blend-screen"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiWcLPG7v9JuOwj2a0GKMnelzBIViC2qROKBekrgbuRosjjo56o2kQsidjz035AQ_AGwMxxzIr-3vZcL9Mi_lHXpTN4DDatB3f6FkrbAgb_4hpgSOCsQ13Eb4pA8z5rBQg42X8BhfQK8yQxu-mAYSg8bAQd_gIRFgnPUyzrxqiqzeArb07PJq9ENE4c1tMvM-d-466P68yIcPGE3UblPPySD34Zuehh8X2lh8yQuacssCs_HJPmW779Q"
-            alt="Massive 20-inch pizza with bubbling cheese and charred crust"
+            className="w-full md:w-4/5 h-full object-cover object-center md:object-right opacity-90 brightness-95"
+            src="/assets/pizzas/hero_pizza_4k.jpg"
+            alt="Massive 20-inch pizza with bubbling cheese, stretching cheese pull and wood-fired oven"
           />
         </div>
 

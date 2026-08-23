@@ -276,9 +276,9 @@ export const PizzaCustomizerPage: React.FC = () => {
             {/* Central Pizza Hero Photography */}
             <div className="relative w-[78%] h-[78%] rounded-full shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-20 flex items-center justify-center bg-[#0e0e0e] overflow-hidden ring-4 ring-[#2a2a2a] group">
               <img 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7JTIiGVbLcRtvN14T9nDs9W_AVzXbIDTfCyQ_uDNSZdB3qq3knen0njDGCCQL3PzgC35J75594wUhGpTMrd4IAdi0nqcSDTZqPG26v7iHuO_iOGuifNfmqOqS2factsIiaId72QG6AFXe-9ICkn7l10oTkfw2bM4Xt4KjlZg77Ot-oXA6mGxB2EcdKfreECyDuTVk5AoD01L3VzUf_v0MyV3Yw2gpZDWU6qF3WLYLLwKDlUy1fgtu4Q"
+                src="/assets/pizzas/forge_pizza_4k.jpg"
                 alt="Hero Loaded Artisanal Pizza with blistered crust and melting cheese"
-                className="w-[105%] h-[105%] object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-[102%] h-[102%] object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 rounded-full shadow-[inset_0_0_40px_rgba(0,0,0,0.8)] pointer-events-none" />
             </div>
@@ -370,7 +370,7 @@ export const PizzaCustomizerPage: React.FC = () => {
                 title="Toggle Pepperoni"
               >
                 <img 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx2P2SC7EwzV02ETvhtQA8KqN_oSq0bM1SyeTJiRQ8nOjlDZiHhhp7CBWjfMvUR79kcd8t3LnRbpBQvnUlubLEX8GxuRv9YR-xUPQgD1YNeJmavL8KUWp9KZ-fPcN-HKj4FQEBbB0x9XEWZlNdH6ZoP_ovo5AJKL7Xvnrra_GEpRQp3n8nu3NKhTgMaJEEoMUBc76ZEllPlXpT4DhfRJb8KZ2uM-uCRCExpOon6Exy7CJKGNb8JboijA"
+                  src="/assets/pizzas/topping_pepperoni.jpg"
                   alt="Pepperoni"
                   className="w-full h-full object-cover"
                 />
@@ -387,7 +387,7 @@ export const PizzaCustomizerPage: React.FC = () => {
                 title="Toggle Mushrooms"
               >
                 <img 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEDUx4UdTgbIr4szJy_g3VB6SVhY8_igCmmay0vSWbX3pQK5hJSHW-AdlP6vjiQwm-BwBC32B4ugUhR9VkDUD3vQiLFPtN-McM2ppikYUJ8GAFqrTO8_BTwXM_QzvKL8gwgsr6WIWjV-D5SW68FwFFGSnDrX74nHzoSdMzo79YMfx3Xcc2wPcyoIfl9qqmLeTJFLsQ-RO7A6JyNxsvevmELAtRLY9D9qp0Qc6qxGa0iJLIscEAQLFBXA"
+                  src="/assets/pizzas/topping_mushroom.jpg"
                   alt="Mushrooms"
                   className="w-full h-full object-cover"
                 />
@@ -404,7 +404,7 @@ export const PizzaCustomizerPage: React.FC = () => {
                 title="Toggle Jalapenos"
               >
                 <img 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB7fkNqFoKncI5TW4KCsPTVD8tn9qym_d5ws5V7TnlklfLS9AHuxAdr2redoxC95mS9OcjGVkqt8zKE3CffThcixwoKFAknlStbT6COqdhAmhGusibqYPf42W-wGJAKuZ-9T_3UwQ6_yQqoKpQNv88_pOky2PWs8DzS6OP439doUSuDE2nQfEvq_M_4BanN1M91hBTcP15PygWBJTVLKCFAWz-d_DDnMgevdfO8R8b1JoawhKOf_FmVw"
+                  src="/assets/pizzas/topping_jalapeno.jpg"
                   alt="Jalapeno"
                   className="w-full h-full object-cover"
                 />
