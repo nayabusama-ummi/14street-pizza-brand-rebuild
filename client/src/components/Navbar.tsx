@@ -26,6 +26,11 @@ export const Navbar: React.FC = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // If on 3D cinematic film experience, let The Story Rail header control the navigation
+  if (location.pathname === "/odyssey" || location.pathname === "/lets-scroll") {
+    return null;
+  }
+
   const closeMobile = () => setMobileMenuOpen(false);
 
   const toggleSound = () => {

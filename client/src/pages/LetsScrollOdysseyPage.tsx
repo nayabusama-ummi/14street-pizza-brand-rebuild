@@ -1,22 +1,25 @@
-import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { ArrowLeft, Pizza } from "lucide-react";
-import { mountLetsScroll } from "../utils/scrubEngine";
+import React, { useEffect, useRef, useState } from "react";
+import { mountLetsScroll, LetsScrollInstance } from "../utils/scrubEngine";
+import { StoryRail } from "../components/StoryRail";
 
 export const LetsScrollOdysseyPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const engineRef = useRef<LetsScrollInstance | null>(null);
+  const [activeChapter, setActiveChapter] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const cleanup = mountLetsScroll(containerRef.current, {
-      brand: { name: "14th Street PIZZA", href: "/" },
-      cta: { label: "Order 20\" Monster", href: "/pizza/build-your-own-pizza" },
-      hint: "Scroll to fly through the diorama world",
+    const instance = mountLetsScroll(containerRef.current, {
+      customHeader: true,
+      atmosphere: true,
       diveScroll: 1.4,
       connScroll: 0.95,
-      atmosphere: true,
-      nav: true,
+      onProgress: (prog: number, activeIdx: number) => {
+        setScrollProgress(prog);
+        setActiveChapter(activeIdx);
+      },
       sections: [
         {
           id: "mill",
@@ -103,29 +106,33 @@ export const LetsScrollOdysseyPage: React.FC = () => {
       ]
     });
 
+    engineRef.current = instance;
+
     return () => {
-      cleanup();
+      if (instance) instance();
     };
   }, []);
 
-  return (
-    <div className="relative min-h-screen bg-charcoal-950">
-      
-      {/* Floating Exit / Back Button */}
-      <div className="fixed top-5 right-5 sm:right-8 z-50">
-        <Link
-          to="/"
-          className="flex items-center gap-2 px-4 py-2 rounded-full bg-charcoal-900/80 backdrop-blur-md hover:bg-charcoal-800 text-cream-200 hover:text-white border border-charcoal-750 text-xs font-bold shadow-xl transition-all btn-press"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Exit 3D World</span>
-        </Link>
-      </div>
+  const handleSelectChapter = (index: number) => {
+    setActiveChapter(index);
+    if (engineRef.current && typeof engineRef.current.jumpTo === "function") {
+      engineRef.current.jumpTo(index);
+    }
+  };
 
-      {/* Main Lets-Scroll Engine Container */}
+  return (
+    <div className="relative min-h-screen bg-[#07080a] text-white overflow-x-hidden">
+      
+      {/* The Story Rail — Cinematic Navigation Header */}
+      <StoryRail 
+        activeChapter={activeChapter} 
+        onSelectChapter={handleSelectChapter}
+        scrollProgress={scrollProgress}
+      />
+
+      {/* Main Lets-Scroll 3D Engine Canvas */}
       <div id="world" ref={containerRef} />
 
     </div>
   );
 };
-

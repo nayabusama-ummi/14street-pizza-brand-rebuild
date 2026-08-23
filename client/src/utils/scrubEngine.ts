@@ -30,6 +30,8 @@ export interface LetsScrollConfig {
   hint?: string;
   nav?: boolean;
   atmosphere?: boolean;
+  customHeader?: boolean;
+  onProgress?: (progress: number, activeIndex: number) => void;
   diveScroll?: number;
   connScroll?: number;
   crossfade?: number;
@@ -38,14 +40,23 @@ export interface LetsScrollConfig {
   connectorsMobile?: string[];
 }
 
-export function mountLetsScroll(container: HTMLElement, config: LetsScrollConfig): () => void {
+export type LetsScrollInstance = {
+  (): void;
+  jumpTo: (index: number) => void;
+};
+
+export function mountLetsScroll(container: HTMLElement, config: LetsScrollConfig): LetsScrollInstance {
   const reduce = typeof window !== "undefined" && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const coarse = typeof window !== "undefined" && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
   const smallMQ = typeof window !== "undefined" && window.matchMedia('(max-width: 860px)');
   const isMobile = () => coarse || (smallMQ ? smallMQ.matches : false);
   const SECTIONS = config.sections || [];
   const N = SECTIONS.length;
-  if (!N || !container) return () => {};
+  if (!N || !container) {
+    const noop: any = () => {};
+    noop.jumpTo = () => {};
+    return noop;
+  }
 
   injectCSS();
   container.classList.add('sw-root');
@@ -85,36 +96,44 @@ export function mountLetsScroll(container: HTMLElement, config: LetsScrollConfig
   scrollbar.appendChild(scrollbarFill);
 
   const topbar = el('div', 'sw-topbar');
-  if (config.brand) {
-    const brand = el('a', 'sw-brand');
-    brand.setAttribute('href', config.brand.href || '/');
-    brand.appendChild(el('span', 'sw-brand__mark'));
-    const nm = el('span', 'sw-brand__name');
-    nm.textContent = config.brand.name || '14th Street PIZZA';
-    brand.appendChild(nm);
-    topbar.appendChild(brand);
-  }
-  const nav = el('nav', 'sw-nav');
-  if (config.nav !== false) topbar.appendChild(nav);
-  if (config.cta && config.cta.label) {
-    const c = el('a', 'sw-topcta');
-    c.setAttribute('href', config.cta.href || '/pizza/build-your-own-pizza');
-    c.textContent = config.cta.label;
-    topbar.appendChild(c);
+  let nav: HTMLElement | null = null;
+  if (!config.customHeader) {
+    if (config.brand) {
+      const brand = el('a', 'sw-brand');
+      brand.setAttribute('href', config.brand.href || '/');
+      brand.appendChild(el('span', 'sw-brand__mark'));
+      const nm = el('span', 'sw-brand__name');
+      nm.textContent = config.brand.name || '14th Street PIZZA';
+      brand.appendChild(nm);
+      topbar.appendChild(brand);
+    }
+    nav = el('nav', 'sw-nav');
+    if (config.nav !== false) topbar.appendChild(nav);
+    if (config.cta && config.cta.label) {
+      const c = el('a', 'sw-topcta');
+      c.setAttribute('href', config.cta.href || '/pizza/build-your-own-pizza');
+      c.textContent = config.cta.label;
+      topbar.appendChild(c);
+    }
   }
 
   const stage = el('div', 'sw-stage');
   const copylayer = el('div', 'sw-copylayer');
   const route = el('div', 'sw-route');
   const hint = el('div', 'sw-hint');
-  const hintText = el('span');
-  hintText.textContent = config.hint || 'Scroll to fly through the diorama world';
-  hint.appendChild(hintText);
-  hint.appendChild(el('i'));
+  if (!config.customHeader) {
+    const hintText = el('span');
+    hintText.textContent = config.hint || 'Scroll to fly through the diorama world';
+    hint.appendChild(hintText);
+    hint.appendChild(el('i'));
+  }
   const track = el('div', 'sw-track');
 
   container.innerHTML = '';
-  [sky, scrollbar, topbar, stage, copylayer, route, hint, track].forEach(n => container.appendChild(n));
+  const nodesToAppend = config.customHeader 
+    ? [sky, stage, copylayer, track]
+    : [sky, scrollbar, topbar, stage, copylayer, route, hint, track];
+  nodesToAppend.forEach(n => container.appendChild(n));
 
   // Build Scene Layers
   SEGMENTS.forEach((s) => {
@@ -178,7 +197,7 @@ export function mountLetsScroll(container: HTMLElement, config: LetsScrollConfig
     route.appendChild(dot);
     dots.push(dot);
 
-    if (config.nav !== false) {
+    if (nav && config.nav !== false) {
       const b = el('button', 'sw-nav__item');
       b.textContent = s.label || '';
       b.addEventListener('click', () => jumpTo(i));
@@ -290,13 +309,20 @@ export function mountLetsScroll(container: HTMLElement, config: LetsScrollConfig
     if (ci !== activeIndex) {
       activeIndex = ci;
       dots.forEach((d, k) => d.classList.toggle('is-active', k === ci));
-      nav.querySelectorAll('.sw-nav__item').forEach((n, k) => n.classList.toggle('is-active', k === ci));
+      if (nav) {
+        nav.querySelectorAll('.sw-nav__item').forEach((n: Element, k: number) => n.classList.toggle('is-active', k === ci));
+      }
       container.style.setProperty('--sw-accent', SECTIONS[ci]?.accent || '#D32F2F');
     }
 
     // Progress Bar & Hints
-    scrollbarFill.style.transform = `scaleX(${clamp(y / (totalW * vh)).toFixed(3)})`;
+    const progressVal = clamp(y / (totalW * vh));
+    scrollbarFill.style.transform = `scaleX(${progressVal.toFixed(3)})`;
     hint.style.opacity = clamp(1 - y / (0.3 * vh)).toFixed(2);
+    
+    if (config.onProgress) {
+      config.onProgress(progressVal, ci);
+    }
     
     ticking = false;
   }
@@ -316,7 +342,7 @@ export function mountLetsScroll(container: HTMLElement, config: LetsScrollConfig
 
   layout();
 
-  return () => {
+  const cleanup: any = () => {
     isUnmounted = true;
     window.removeEventListener('scroll', scrollHandler);
     window.removeEventListener('resize', layout);
@@ -331,6 +357,9 @@ export function mountLetsScroll(container: HTMLElement, config: LetsScrollConfig
       }
     });
   };
+
+  cleanup.jumpTo = jumpTo;
+  return cleanup;
 
   function el(tag: string, cls?: string): HTMLElement {
     const n = document.createElement(tag);

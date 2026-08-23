@@ -1,8 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Pizza, ShieldAlert, Heart, ArrowUpRight, Code2, Sparkles, MapPin } from "lucide-react";
 
 export const Footer: React.FC = () => {
+  const location = useLocation();
+  if (location.pathname === "/odyssey" || location.pathname === "/lets-scroll") {
+    return null;
+  }
   return (
     <footer className="bg-[#0e0e0e] border-t border-[#201f1f] pt-16 pb-12 text-[#cdc0ad] text-xs font-sans">
       <div className="content-canvas space-y-12">
