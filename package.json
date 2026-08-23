@@ -1,0 +1,31 @@
+{
+  "name": "14th-street-pizza-brand-rebuild",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack pizza ordering experience with interactive 3D diorama storytelling and server-authoritative pricing",
+  "scripts": {
+    "build": "npm run build:client",
+    "build:client": "cd client && npm install && npm run build",
+    "build:server": "cd server && npm install && npm run build",
+    "install:all": "npm install --prefix client && npm install --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "test": "npm run test --prefix server"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.13.5",
+    "@types/swagger-ui-express": "^4.1.8",
+    "typescript": "^5.7.3"
+  }
+}
