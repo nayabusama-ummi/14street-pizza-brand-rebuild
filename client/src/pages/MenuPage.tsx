@@ -53,6 +53,10 @@ export const MenuPage: React.FC = () => {
   const handleCategoryChange = (cat: string) => {
     sound.playClick();
     setSelectedCategory(cat);
+    // Reset heat filter if switching to categories without spicy tiers
+    if (cat === "deals" || cat === "drinks" || cat === "desserts") {
+      setSelectedHeatLevel(null);
+    }
     if (cat === "all") {
       searchParams.delete("category");
       setSearchParams(searchParams);
@@ -72,32 +76,125 @@ export const MenuPage: React.FC = () => {
     const matchesCategory = 
       selectedCategory === "all" || 
       item.category === selectedCategory ||
+      (selectedCategory === "pizzas" && (item.category === "pizzas" || item.category === "build-your-own")) ||
       (selectedCategory === "hot-spicy" && (item.spicyLevel ?? 0) >= 2) ||
+      (selectedCategory === "sides" && (item.category === "sides" || item.category === "drinks" || item.category === "desserts")) ||
       (selectedCategory === "drinks-desserts" && (item.category === "drinks" || item.category === "desserts"));
     
     const matchesSearch = 
+      searchQuery.trim() === "" ||
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.description.toLowerCase().includes(searchQuery.toLowerCase());
+      item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (item.tagline && item.tagline.toLowerCase().includes(searchQuery.toLowerCase()));
 
+    // Heat filter applies to items with spicy tiers or general catalog browsing
     const matchesHeat = 
-      selectedHeatLevel === null || (item.spicyLevel ?? 0) === selectedHeatLevel;
+      selectedHeatLevel === null || 
+      (selectedCategory === "deals" ? true : (item.spicyLevel ?? 0) === selectedHeatLevel);
 
     return matchesCategory && matchesSearch && matchesHeat;
   });
 
-  const getFlavorDNA = (item: MenuItem) => {
+  const getItemProfileMeters = (item: MenuItem) => {
+    if (item.category === "drinks") {
+      const isBottle = item.id.includes("1500ml");
+      return {
+        meter1Label: "Serving Chill",
+        meter1Value: "Ice-Cold (2°C)",
+        meter1Percent: "95%",
+        meter1Color: "bg-sky-400",
+        meter2Label: "Carbonation",
+        meter2Value: "High Fizz Refreshment",
+        meter2Percent: "90%",
+        meter2Color: "bg-[#F5A623]"
+      };
+    }
+
+    if (item.category === "desserts") {
+      return {
+        meter1Label: "Molten Core",
+        meter1Value: "Dark Belgian Chocolate",
+        meter1Percent: "100%",
+        meter1Color: "bg-[#795548]",
+        meter2Label: "Serving Profile",
+        meter2Value: "Freshly Baked Warm",
+        meter2Percent: "85%",
+        meter2Color: "bg-[#F5A623]"
+      };
+    }
+
+    if (item.category === "sides") {
+      if (item.id.includes("wings")) {
+        return {
+          meter1Label: "Peri-Peri Heat",
+          meter1Value: "Fiery Flame Glaze",
+          meter1Percent: "95%",
+          meter1Color: "bg-[#D32F2F]",
+          meter2Label: "Dip Pairing",
+          meter2Value: "Cooling Garlic Ranch",
+          meter2Percent: "90%",
+          meter2Color: "bg-emerald-400"
+        };
+      }
+      if (item.id.includes("bread")) {
+        return {
+          meter1Label: "Cheese Pull",
+          meter1Value: "Melted Mozzarella & Cheddar",
+          meter1Percent: "95%",
+          meter1Color: "bg-[#FDFBF7]",
+          meter2Label: "Herb Butter",
+          meter2Value: "Roasted Garlic Rosemary",
+          meter2Percent: "85%",
+          meter2Color: "bg-[#F5A623]"
+        };
+      }
+      // Curly Fries
+      return {
+        meter1Label: "Texture",
+        meter1Value: "Crispy Spiral Cut",
+        meter1Percent: "90%",
+        meter1Color: "bg-[#F5A623]",
+        meter2Label: "Loaded Topping",
+        meter2Value: "Cheddar & Jalapeños",
+        meter2Percent: "85%",
+        meter2Color: "bg-[#D32F2F]"
+      };
+    }
+
+    if (item.category === "deals") {
+      return {
+        meter1Label: "Feast Capacity",
+        meter1Value: item.id.includes("monster") ? "Colossal Feast (5-6 Persons)" : "Duo Feast (2-3 Persons)",
+        meter1Percent: item.id.includes("monster") ? "100%" : "75%",
+        meter1Color: "bg-[#D32F2F]",
+        meter2Label: "Combo Value",
+        meter2Value: "Includes Pizza, Sides & Drinks",
+        meter2Percent: "95%",
+        meter2Color: "bg-[#F5A623]"
+      };
+    }
+
+    // Default: Signature Pizzas and Pizza Forge
     const isSpicy = item.spicyLevel ?? 0;
     let heatLabel = "Mild";
-    let heatPercent = "20%";
-    if (isSpicy === 1) { heatLabel = "Warm"; heatPercent = "45%"; }
+    let heatPercent = "25%";
+    if (isSpicy === 1) { heatLabel = "Warm"; heatPercent = "50%"; }
     else if (isSpicy === 2) { heatLabel = "Kick"; heatPercent = "75%"; }
     else if (isSpicy >= 3) { heatLabel = "Fiery"; heatPercent = "100%"; }
 
     const isCheese = item.id.includes("cheese") || item.id.includes("pepperoni") ? "Epic Stretch" : "High Stretch";
     const cheesePercent = item.id.includes("cheese") ? "95%" : "80%";
-    const loadedPercent = item.sizes ? "85%" : "60%";
 
-    return { heatLabel, heatPercent, isCheese, cheesePercent, loadedPercent };
+    return {
+      meter1Label: "Cheese Pull",
+      meter1Value: isCheese,
+      meter1Percent: cheesePercent,
+      meter1Color: "bg-[#FDFBF7]",
+      meter2Label: "Heat Intensity",
+      meter2Value: heatLabel,
+      meter2Percent: heatPercent,
+      meter2Color: "bg-[#D32F2F]"
+    };
   };
 
   const handleQuickAdd = (item: MenuItem) => {
@@ -328,7 +425,7 @@ export const MenuPage: React.FC = () => {
             <div className="space-y-24">
               {filteredItems.map((item, index) => {
                 const isEven = index % 2 === 1;
-                const dna = getFlavorDNA(item);
+                const profile = getItemProfileMeters(item);
 
                 return (
                   <div 
@@ -371,31 +468,42 @@ export const MenuPage: React.FC = () => {
                         </p>
                       </div>
 
-                      {/* Flavor DNA Gauges */}
+                      {/* Flavor DNA & Profile Gauges */}
                       <div className="p-4 rounded-2xl bg-[#1c1b1b] border border-[#2a2a2a] space-y-3 max-w-md">
-                        <div className="font-sans text-[11px] font-bold text-[#ffb955] uppercase tracking-widest">
-                          Flavor DNA Meters
+                        <div className="font-sans text-[11px] font-bold text-[#ffb955] uppercase tracking-widest flex items-center justify-between">
+                          <span>
+                            {item.category === "drinks" 
+                              ? "Refreshment Profile" 
+                              : item.category === "desserts" 
+                              ? "Dessert Profile" 
+                              : item.category === "deals" 
+                              ? "Feast Specs" 
+                              : "Flavor DNA Meters"}
+                          </span>
+                          {item.category === "drinks" && (
+                            <span className="text-[10px] text-sky-400 font-mono font-bold">CHILLED 2°C</span>
+                          )}
                         </div>
 
-                        {/* Cheese Gauge */}
+                        {/* Meter 1 */}
                         <div className="space-y-1">
                           <div className="flex justify-between font-sans text-xs text-[#e5e2e1]">
-                            <span>Cheese Pull</span>
-                            <span className="text-white font-bold">{dna.isCheese}</span>
+                            <span>{profile.meter1Label}</span>
+                            <span className="text-white font-bold">{profile.meter1Value}</span>
                           </div>
                           <div className="h-1.5 bg-[#2a2a2a] rounded-full overflow-hidden">
-                            <div className="h-full bg-[#FDFBF7]" style={{ width: dna.cheesePercent }} />
+                            <div className={`h-full ${profile.meter1Color}`} style={{ width: profile.meter1Percent }} />
                           </div>
                         </div>
 
-                        {/* Heat Gauge */}
+                        {/* Meter 2 */}
                         <div className="space-y-1">
                           <div className="flex justify-between font-sans text-xs text-[#e5e2e1]">
-                            <span>Heat Intensity</span>
-                            <span className="text-[#ffb4ab] font-bold">{dna.heatLabel}</span>
+                            <span>{profile.meter2Label}</span>
+                            <span className="text-[#ffb955] font-bold">{profile.meter2Value}</span>
                           </div>
                           <div className="h-1.5 bg-[#2a2a2a] rounded-full overflow-hidden">
-                            <div className="h-full bg-[#D32F2F]" style={{ width: dna.heatPercent }} />
+                            <div className={`h-full ${profile.meter2Color}`} style={{ width: profile.meter2Percent }} />
                           </div>
                         </div>
                       </div>

@@ -175,7 +175,7 @@ export const seedMenu: MenuItem[] = [
     tagline: "Oven-baked baguette brushed with garlic herb butter.",
     description: "Crispy-crusted golden bread stuffed with melted mozzarella, cheddar, and fresh rosemary garlic butter. Served with warm marinara dipping sauce.",
     category: "sides",
-    image: "https://images.unsplash.com/photo-1619895092538-128341789043?auto=format&fit=crop&w=800&q=80",
+    image: "/assets/items/garlic_bread_4k.jpg",
     available: true,
     featured: false,
     basePrice: 499
@@ -186,7 +186,7 @@ export const seedMenu: MenuItem[] = [
     tagline: "Juicy, crispy-skinned oven-baked wings with spicy glaze.",
     description: "Tender chicken wings tossed in our signature flame-roasted peri-peri chili glaze, accompanied by cooling garlic ranch dip.",
     category: "sides",
-    image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=800&q=80",
+    image: "/assets/items/wings_4k.jpg",
     available: true,
     featured: false,
     spicyLevel: 3,
@@ -198,7 +198,7 @@ export const seedMenu: MenuItem[] = [
     tagline: "Seasoned spiral cut potatoes with cheese & jalapeños.",
     description: "Crispy seasoned curly fries drizzled with melted cheddar cheese sauce, crushed beef bacon bits, and chopped pickled jalapeños.",
     category: "sides",
-    image: "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=800&q=80",
+    image: "/assets/items/curly_fries_4k.jpg",
     available: true,
     featured: false,
     basePrice: 549
@@ -211,7 +211,7 @@ export const seedMenu: MenuItem[] = [
     tagline: "Ice-cold refreshing fizz.",
     description: "Choice of Coca-Cola, Sprite, or Fanta in a chilled 1.5 Liter party bottle.",
     category: "drinks",
-    image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=800&q=80",
+    image: "/assets/items/drink_bottle_4k.jpg",
     available: true,
     featured: false,
     basePrice: 280
@@ -222,7 +222,7 @@ export const seedMenu: MenuItem[] = [
     tagline: "Single serve ice cold can.",
     description: "Chilled 345ml can of Coca-Cola, Coca-Cola Zero, Sprite, or Pakola Cream Soda.",
     category: "drinks",
-    image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80",
+    image: "/assets/items/drink_can_4k.jpg",
     available: true,
     featured: false,
     basePrice: 150
@@ -235,7 +235,7 @@ export const seedMenu: MenuItem[] = [
     tagline: "Warm decadent cake with an oozing rich chocolate core.",
     description: "Freshly baked individual chocolate sponge cake with a molten dark Belgian chocolate center. Dusted with powdered icing sugar.",
     category: "desserts",
-    image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80",
+    image: "/assets/items/lava_cake_4k.jpg",
     available: true,
     featured: false,
     basePrice: 499
